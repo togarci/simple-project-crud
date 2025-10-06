@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+@theme {
+}
+
+body {
+  @apply min-w-screen min-h-screen;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+p,
+span {
+  font-size-adjust: 0.5;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
