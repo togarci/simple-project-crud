@@ -1,3 +1,5 @@
 <template>
-  <p class="font-bold text-lg text-green-500">Hello World</p>
+  <div class="h-[calc(100vh-178px)]">
+    <HomeEmptyState />
+  </div>
 </template>
