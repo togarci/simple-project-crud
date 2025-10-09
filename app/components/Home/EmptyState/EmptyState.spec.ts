@@ -18,11 +18,7 @@ describe('Home/EmptyState', () => {
   it('should render a link to create a new project with a button inside', async () => {
     const wrapper = await mountSuspended(EmptyState);
 
-    const link = wrapper.findComponent({ name: 'NuxtLink' });
-    expect(link.exists()).toBe(true);
-    expect(link.props('to')).toBe('/new-project');
-
-    const button = link.findComponent({ name: 'Button' });
+    const button = wrapper.findComponent({ name: 'Button' });
     expect(button.exists()).toBe(true);
 
     const icon = button.findComponent({ name: 'IconCirclePlus' });

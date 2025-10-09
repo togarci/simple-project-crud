@@ -1,20 +1,20 @@
-<script setup lang="ts">
-const { className = 'size-5 fill-none text-white' } = defineProps<{
+<script lang="ts" setup>
+const { className = 'size-4 fill-none text-primary-500' } = defineProps<{
   className?: string;
 }>();
 </script>
 
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" :class="className" viewBox="0 0 20 20">
+  <svg xmlns="http://www.w3.org/2000/svg" :class="className" viewBox="0 0 16 16">
     <path
-      d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+      d="M12.6666 8H3.33325"
       stroke="currentColor"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
-      d="M19 19L14.65 14.65"
+      d="M7.99992 12.6667L3.33325 8L7.99992 3.33333"
       stroke="currentColor"
       stroke-width="2"
       stroke-linecap="round"

@@ -4,8 +4,8 @@
   --font-primary: 'Encode Sans Semi Expanded', sans-serif;
 
   --color-primary-50: #f4f2ff;
-  --color-primary-100: #e0dcfd;
-  --color-primary-200: #c8c1fa;
+  --color-primary-100: #c8c1fa;
+  --color-primary-200: #b2a8ff;
   --color-primary-300: #aea5f5;
   --color-primary-400: #8f82ef;
   --color-primary-500: #695ccd;
@@ -21,6 +21,9 @@
   --color-neutral-500: #717171;
   --color-neutral-700: #53525d;
   --color-neutral-900: #2a2a30;
+
+  --color-error-500: #c40000;
+  --color-error-700: #9f0000;
 
   --color-accent: #ffb23d;
 
