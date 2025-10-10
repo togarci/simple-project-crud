@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { formatDateToLong } from '~/utils/formatDate';
 
-const emit = defineEmits(['handleEdit', 'hendleDelete']);
+const emit = defineEmits(['handleDelete']);
 
 defineProps<{
   project: {
@@ -40,11 +40,12 @@ onMounted(() => {
           ref="menuRef"
           class="bg-white relative shadow-custom flex items-center justify-center size-8 rounded-full"
           type="button"
+          data-testId="button-menu"
         >
           <IconMenu />
 
           <ul v-if="isOpenMenu" class="absolute shadow-custom-100 rounded-lg bg-white w-[240px] right-0 top-9">
-            <li @click="emit('handleEdit', project.id)">
+            <li data-testId="edit-option">
               <a class="p-3 cursor-pointer flex items-center gap-2" :href="`/update/project/${project.id}`">
                 <div class="size-6 flex items-center justify-center">
                   <IconEdit />
@@ -52,7 +53,11 @@ onMounted(() => {
                 <span class="text-primary-500 font-normal text-base">Editar</span>
               </a>
             </li>
-            <li @click="emit('hendleDelete', project.id)" class="p-3 flex cursor-pointer items-center gap-2">
+            <li
+              data-testId="delete-option"
+              @click="emit('handleDelete', project.id)"
+              class="p-3 flex cursor-pointer items-center gap-2"
+            >
               <div class="size-6 flex items-center justify-center">
                 <IconThinTrash class="size-6 fill-none text-primary-500" />
               </div>

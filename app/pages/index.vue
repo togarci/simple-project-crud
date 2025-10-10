@@ -17,14 +17,18 @@ const deleteProject = (projectId: string) => {
 <template>
   <div class="h-[calc(100vh-178px)]">
     <template v-if="projectStore.projects.length > 0">
-      <div class="flex gap-5 flex-wrap">
-        <HomeProjectCard
-          v-for="project in projectStore.projects"
-          :key="project.id"
-          :project="project"
-          @hendleDelete="deleteProject"
-          data-testid="project-card"
-        />
+      <div class="flex flex-col items-center gap-7">
+        <HomeHeader :projectCount="projectStore.projects.length" />
+
+        <div class="flex w-full gap-5 flex-wrap">
+          <HomeProjectCard
+            v-for="project in projectStore.projects"
+            :key="project.id"
+            :project="project"
+            @hendleDelete="deleteProject"
+            data-testid="project-card"
+          />
+        </div>
       </div>
     </template>
     <template v-else>
