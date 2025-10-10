@@ -33,8 +33,8 @@ const submit = handleSubmit((values) => {
     let body: any = {
       name: values.name,
       client: values.client,
-      start_date: values.startDate,
-      end_date: values.endDate,
+      startDate: values.startDate,
+      endDate: values.endDate,
     };
 
     if (image.value) {
@@ -44,8 +44,9 @@ const submit = handleSubmit((values) => {
       };
     }
 
-    projectStore.createProject(body);
+    projectStore.addToData(body);
     toast.success('Projeto criado com sucesso.');
+    image.value = null;
     resetForm();
   } catch (error) {
     toast.error('Falha ao criar projeto.');
