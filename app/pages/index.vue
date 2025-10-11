@@ -31,6 +31,7 @@ const deleteProject = (projectId: string) => {
         </div>
       </div>
     </template>
+
     <template v-else>
       <HomeEmptyState />
     </template>

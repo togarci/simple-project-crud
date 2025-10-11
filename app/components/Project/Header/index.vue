@@ -1,6 +1,8 @@
 <script setup lang="ts">
+const router = useRouter();
+
 const handleBack = () => {
-  window.history.back();
+  router.push('/');
 };
 </script>
 

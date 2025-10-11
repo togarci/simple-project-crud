@@ -31,12 +31,12 @@ const options = [
 
       <Select :options="options" v-model="sortBy" />
 
-      <a href="/create/project">
+      <NuxtLink to="/project/create">
         <Button>
           <IconCirclePlus />
           <span class="text-base text-nowrap"> Novo Projeto </span>
         </Button>
-      </a>
+      </NuxtLink>
     </div>
   </div>
 </template>

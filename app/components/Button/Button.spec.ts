@@ -50,4 +50,17 @@ describe('Button', () => {
     await wrapper.trigger('click');
     expect(wrapper.emitted('click')).toBeUndefined();
   });
+
+  it('should render correctly size', async () => {
+    const wrapper = await mount(Button, {
+      props: {
+        size: 'md',
+      },
+    });
+
+    expect(wrapper.classes()).toContain('h-10 text-base gap-2.5');
+
+    await wrapper.setProps({ size: 'lg' });
+    expect(wrapper.classes()).toContain('h-[52px] text-xl gap-3.5');
+  });
 });

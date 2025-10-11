@@ -17,12 +17,14 @@ export const useProjectStore = defineStore(
       projects.value.push({ ...data, id: uuid });
     }
 
-    function updateData(id?: string, project?: Project) {
-      if (!id || !project) return;
-
+    function updateData(id: string, data: Project) {
       projects.value.forEach((item) => {
         if (item.id === id) {
-          item = project;
+          item.name = data.name;
+          item.client = data.client;
+          item.startDate = data.startDate;
+          item.endDate = data.endDate;
+          item.image = data.image;
         }
       });
     }

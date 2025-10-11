@@ -1,55 +1,66 @@
 <script lang="ts" setup>
 import { useField, useForm } from 'vee-validate';
 import projectSchema from './schema';
-import { useProjectStore } from '~/store/project';
-import { toast } from 'vue3-toastify';
+import type { Project } from '~/store/project';
+
+const emit = defineEmits(['submit']);
+const props = defineProps<{
+  initFormValues?: Project;
+}>();
 
 const { handleSubmit, resetForm } = useForm<{
   name: string;
   client: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
 }>({
   validationSchema: projectSchema,
-  initialValues: {
+  initialValues: props.initFormValues || {
     name: '',
     client: '',
   },
 });
 
-const image = ref(null);
+const image = ref<any>(null);
 const { value: projectName, errorMessage: projectNameFormError } = useField('name');
 const { value: projectClient, errorMessage: projectClientFormError } = useField('client');
 const { value: projectStartDate, errorMessage: projetcStartDateFormError } = useField('startDate');
 const { value: projectEndDate, errorMessage: projectEndDateFormError } = useField('endDate');
 
-const projectStore = useProjectStore();
 const checkAllFields = computed(() => {
   return !(projectName.value && projectClient.value && projectStartDate.value && projectEndDate.value);
 });
 
+const handleClearForm = () => {
+  resetForm();
+  image.value = null;
+};
+
 const submit = handleSubmit((values) => {
-  try {
-    let body: any = {
-      name: values.name,
-      client: values.client,
-      startDate: values.startDate,
-      endDate: values.endDate,
+  let body: any = {
+    name: values.name,
+    client: values.client,
+    startDate: values.startDate,
+    endDate: values.endDate,
+  };
+
+  if (image.value) {
+    body = {
+      ...body,
+      image: image.value,
     };
+  }
 
-    if (image.value) {
-      body = {
-        ...body,
-        image: image.value,
-      };
-    }
+  emit('submit', body);
+});
 
-    projectStore.addToData(body);
-    toast.success('Projeto criado com sucesso.');
-    image.value = null;
-    resetForm();
-  } catch (error) {
-    toast.error('Falha ao criar projeto.');
+defineExpose({
+  handleClearForm,
+});
+
+onMounted(() => {
+  if (props.initFormValues?.image) {
+    image.value = props.initFormValues.image;
   }
 });
 </script>

@@ -46,12 +46,12 @@ onMounted(() => {
 
           <ul v-if="isOpenMenu" class="absolute shadow-custom-100 rounded-lg bg-white w-[240px] right-0 top-9">
             <li data-testId="edit-option">
-              <a class="p-3 cursor-pointer flex items-center gap-2" :href="`/update/project/${project.id}`">
+              <NuxtLink class="p-3 cursor-pointer flex items-center gap-2" :to="`/project/${project.id}`">
                 <div class="size-6 flex items-center justify-center">
                   <IconEdit />
                 </div>
                 <span class="text-primary-500 font-normal text-base">Editar</span>
-              </a>
+              </NuxtLink>
             </li>
             <li
               data-testId="delete-option"

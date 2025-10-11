@@ -6,12 +6,12 @@
         Clique no botão abaixo para criar o primeiro e gerenciá-lo.
       </p>
 
-      <a data-testId="create-project-link" href="/create/project" class="max-w-[230px] w-full">
+      <NuxtLink data-testId="create-project-link" to="/project/create" class="max-w-[230px] w-full">
         <Button size="lg">
           <IconCirclePlus />
           Novo Projeto
         </Button>
-      </a>
+      </NuxtLink>
     </div>
   </section>
 </template>
