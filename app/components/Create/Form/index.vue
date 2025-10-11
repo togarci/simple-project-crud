@@ -88,6 +88,6 @@ const submit = handleSubmit((values) => {
 
     <InputFile :limitMbSize="5" v-model="image" data-testid="input-file" />
 
-    <Button type="submit" :disabled="checkAllFields"> Salvar projeto </Button>
+    <Button size="lg" type="submit" :disabled="checkAllFields"> Salvar projeto </Button>
   </form>
 </template>

@@ -3,7 +3,23 @@ defineProps<{
   projectCount: number;
 }>();
 
-const favorite = ref(false);
+const isFavorite = defineModel<boolean>('isFavorite');
+const sortBy = defineModel<string>('sortBy');
+
+const options = [
+  {
+    text: 'Ordem alfabética',
+    value: 'alphabetical',
+  },
+  {
+    text: 'Iniciados mais recentes',
+    value: 'recent',
+  },
+  {
+    text: 'Prazo mais próximo',
+    value: 'deadline',
+  },
+];
 </script>
 
 <template>
@@ -11,7 +27,16 @@ const favorite = ref(false);
     <h1 class="text-primary-900 font-semibold text-2xl">Projetos ({{ projectCount }})</h1>
 
     <div class="flex gap-5">
-      <Switch label="Apenas Favoritos" v-model="favorite" />
+      <Switch label="Apenas Favoritos" v-model="isFavorite" />
+
+      <Select :options="options" v-model="sortBy" />
+
+      <a href="/create/project">
+        <Button>
+          <IconCirclePlus />
+          <span class="text-base text-nowrap"> Novo Projeto </span>
+        </Button>
+      </a>
     </div>
   </div>
 </template>

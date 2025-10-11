@@ -7,7 +7,7 @@
       </p>
 
       <a data-testId="create-project-link" href="/create/project" class="max-w-[230px] w-full">
-        <Button>
+        <Button size="lg">
           <IconCirclePlus />
           Novo Projeto
         </Button>

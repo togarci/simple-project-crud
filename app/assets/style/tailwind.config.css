@@ -33,7 +33,7 @@
 }
 
 body {
-  @apply font-primary bg-primary-50;
+  @apply font-primary bg-primary-50 text-primary-950;
 }
 
 * {

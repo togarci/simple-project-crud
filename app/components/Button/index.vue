@@ -1,8 +1,13 @@
 <script setup lang="ts">
-const { type = 'button', variant = 'primary' } = defineProps<{
+const {
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
+} = defineProps<{
   disabled?: boolean;
   type?: HTMLButtonElement['type'];
   variant?: 'primary' | 'secondary';
+  size?: 'md' | 'lg';
 }>();
 
 defineEmits(['click']);
@@ -13,12 +18,14 @@ defineEmits(['click']);
     :type="type"
     :disabled="disabled"
     @click="$emit('click')"
-    class="rounded-[26px] w-full flex items-center justify-center gap-3.5 font-normal text-xl px-8 transition-colors"
+    class="rounded-[26px] w-full flex items-center justify-center font-normal px-8 transition-colors"
     :class="{
-      'bg-primary-200 cursor-not-allowed text-white py-3': disabled,
-      'bg-primary-500 hover:bg-primary-600 cursor-pointer text-white py-3': variant === 'primary' && !disabled,
-      'bg-white border border-primary-500 hover:bg-secondary-500 text-primary-500 py-[11px] cursor-pointer':
+      'bg-primary-200 cursor-not-allowed text-white': disabled,
+      'bg-primary-500 hover:bg-primary-600 cursor-pointer text-white': variant === 'primary' && !disabled,
+      'bg-white border border-primary-500 hover:bg-secondary-500 text-primary-500  cursor-pointer':
         variant === 'secondary' && !disabled,
+      'h-10 text-base gap-2.5': size === 'md',
+      'h-[52px] text-xl gap-3.5': size === 'lg',
     }"
   >
     <slot></slot>

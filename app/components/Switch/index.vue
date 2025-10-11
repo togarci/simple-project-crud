@@ -14,6 +14,6 @@ const model = defineModel<boolean>();
         :class="{ 'translate-x-0': !model, 'translate-x-6': model }"
       />
     </div>
-    <label v-if="label" class="font-normal text-base text-primary-950">{{ label }}</label>
+    <label v-if="label" class="font-normal text-nowrap text-base text-primary-950">{{ label }}</label>
   </div>
 </template>

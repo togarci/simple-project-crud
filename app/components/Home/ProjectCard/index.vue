@@ -56,7 +56,7 @@ onMounted(() => {
             <li
               data-testId="delete-option"
               @click="emit('handleDelete', project.id)"
-              class="p-3 flex cursor-pointer items-center gap-2"
+              class="p-3 flex cursor-pointer items-center border-t border-primary-50 gap-2"
             >
               <div class="size-6 flex items-center justify-center">
                 <IconThinTrash class="size-6 fill-none text-primary-500" />
