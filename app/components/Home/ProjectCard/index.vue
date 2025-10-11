@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import { useWishListeStore } from '~/store/wishlist';
 import { formatDateToLong } from '~/utils/formatDate';
 
 const emit = defineEmits(['handleDelete']);
+const wishListStore = useWishListeStore();
 
-defineProps<{
+const props = defineProps<{
   project: {
     image?: string | null | undefined;
     id: string;
@@ -16,12 +18,17 @@ defineProps<{
 
 const isOpenMenu = ref(false);
 const menuRef: any = ref(null);
+const isFavorite = computed(() => wishListStore.wishlist.includes(props.project.id));
 
 onMounted(() => {
   window.addEventListener('click', (evt) => {
     if (menuRef.value && !menuRef.value?.contains(evt.target)) isOpenMenu.value = false;
   });
 });
+
+const handleWishList = () => {
+  isFavorite.value ? wishListStore.removeFromData(props.project.id) : wishListStore.addToData(props.project.id);
+};
 </script>
 
 <template>
@@ -33,7 +40,14 @@ onMounted(() => {
       />
 
       <div class="flex items-center absolute bottom-5 right-5 gap-5">
-        <IconStar />
+        <button @click="handleWishList" type="button">
+          <IconStar
+            :className="{
+              'size-[22px] fill-none text-white': !isFavorite,
+              'size-[22px] fill-accent text-white': isFavorite,
+            }"
+          />
+        </button>
 
         <button
           @click="isOpenMenu = !isOpenMenu"

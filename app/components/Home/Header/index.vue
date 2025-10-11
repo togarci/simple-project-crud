@@ -3,7 +3,7 @@ defineProps<{
   projectCount: number;
 }>();
 
-const isFavorite = defineModel<boolean>('isFavorite');
+const wishList = defineModel<boolean>('wishList');
 const sortBy = defineModel<string>('sortBy');
 
 const options = [
@@ -27,7 +27,7 @@ const options = [
     <h1 class="text-primary-900 font-semibold text-2xl">Projetos ({{ projectCount }})</h1>
 
     <div class="flex gap-5">
-      <Switch label="Apenas Favoritos" v-model="isFavorite" />
+      <Switch label="Apenas Favoritos" v-model="wishList" />
 
       <Select :options="options" v-model="sortBy" />
 
