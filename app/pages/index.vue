@@ -25,7 +25,7 @@ const deleteProject = (projectId: string) => {
             v-for="project in projectStore.projects"
             :key="project.id"
             :project="project"
-            @hendleDelete="deleteProject"
+            @handleDelete="deleteProject"
             data-testid="project-card"
           />
         </div>
