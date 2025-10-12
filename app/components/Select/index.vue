@@ -50,6 +50,7 @@ onUnmounted(() => {
         'rounded-t-lg border-primary-500': isOpenSelect,
         'cursor-not-allowed bg-neutral-200': disabled,
       }"
+      data-testId="select-test"
     >
       <p class="font-normal text-base" v-if="model">
         {{ options.find((option) => option.value === model)?.text }}
@@ -65,6 +66,7 @@ onUnmounted(() => {
 
     <ul
       v-if="isOpenSelect"
+      data-testId="select-options"
       class="absolute w-full z-10 bg-white right-0 flex rounded-b-lg shadow-custom-100 border border-primary-500 !border-t-0 flex-col"
     >
       <li

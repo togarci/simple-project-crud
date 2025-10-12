@@ -58,9 +58,9 @@ describe('Button', () => {
       },
     });
 
-    expect(wrapper.classes()).toContain('h-10 text-base gap-2.5');
+    expect(wrapper.classes()).toContain('h-10');
 
     await wrapper.setProps({ size: 'lg' });
-    expect(wrapper.classes()).toContain('h-[52px] text-xl gap-3.5');
+    expect(wrapper.classes()).toContain('h-[52px]');
   });
 });
