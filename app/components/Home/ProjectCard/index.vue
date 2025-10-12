@@ -19,12 +19,17 @@ const props = defineProps<{
 }>();
 
 const isOpenMenu = ref(false);
+const isOpenModal = ref(false);
 const menuRef: any = ref(null);
 const isFavorite = computed(() => wishListStore.wishlist.includes(props.project.id));
 
-const deleteProject = (projectId: string) => {
+const handleDelete = () => {
+  isOpenModal.value = true;
+};
+
+const deleteProject = () => {
   try {
-    projectStore.removeFromData(projectId);
+    projectStore.removeFromData(props.project.id);
     toast.success('Projeto deletado com sucesso.');
   } catch (error) {
     toast.error('Falha ao deletar projeto.');
@@ -44,6 +49,15 @@ const handleWishList = () => {
 
 <template>
   <div>
+    <Modal @submit="deleteProject" v-model:isOpenModal="isOpenModal" title="Remover projeto">
+      <template #icon> <IconTrash className="size-5 fill-none text-white" /></template>
+
+      <div class="flex flex-col w-full py-10 gap-4">
+        <p class="text-neutral-500 font-normal text-center text-base">Essa ação removerá definitivamente o projeto:</p>
+        <h1 class="text-primary-950 text-center text-2xl font-medium">{{ project.name }}</h1>
+      </div>
+    </Modal>
+
     <div class="relative">
       <img
         :src="project.image ? project.image : '/image/ProjectCard/Image.png'"
@@ -80,7 +94,7 @@ const handleWishList = () => {
             </li>
             <li
               data-testId="delete-option"
-              @click="deleteProject(project.id)"
+              @click="handleDelete"
               class="p-3 flex cursor-pointer items-center border-t border-primary-50 gap-2"
             >
               <div class="size-6 flex items-center justify-center">

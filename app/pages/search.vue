@@ -14,7 +14,7 @@ const allProjectData = computed(() => projectStore.projects.filter((project) => 
 <template>
   <div>
     <SearchHeader v-model:searchQ="searchQ" />
-    <section class="px-8 py-12">
+    <section class="px-8 py-12 flex flex-col gap-7">
       <PageHeader title="Resultado da busca" />
 
       <div class="flex w-full gap-5 flex-wrap">

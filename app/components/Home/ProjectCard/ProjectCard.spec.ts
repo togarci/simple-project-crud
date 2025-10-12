@@ -70,7 +70,11 @@ describe('ProjectCard', () => {
     expect(optionDelete.exists()).toBe(true);
 
     await optionDelete.trigger('click');
-    expect(wrapper.emitted('handleDelete')).toBeTruthy();
+    await wrapper.vm.$nextTick();
+
+    // @ts-ignore
+    const isOpenModal = wrapper.vm.isOpenModal;
+    expect(isOpenModal).toEqual(true);
   });
 
   it('should close the menu when clicking outside', async () => {

@@ -6,9 +6,13 @@ const mockRouter = {
   push: vi.fn(),
 };
 
-describe('ProjectHeader', () => {
+describe('PageHeader', () => {
   it('should render the title correctly', async () => {
-    const wrapper = await mount(ProjectHeader);
+    const wrapper = await mount(ProjectHeader, {
+      props: {
+        title: 'Novo projeto',
+      },
+    });
 
     const heading = wrapper.find('h1');
     expect(heading.exists()).toBe(true);
