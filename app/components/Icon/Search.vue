@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { className = 'size-5 fill-none text-white' } = defineProps<{
-  className?: string;
+  className?: any;
 }>();
 </script>
 

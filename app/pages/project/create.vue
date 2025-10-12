@@ -2,6 +2,11 @@
 import { toast } from 'vue3-toastify';
 import { useProjectStore, type Project } from '~/store/project';
 
+definePageMeta({
+  layout: 'default',
+  showSearch: false,
+});
+
 const projectStore = useProjectStore();
 
 const formRef: any = ref(null);
@@ -21,7 +26,7 @@ const handleSubmit = (body: Project) => {
 
 <template>
   <div class="flex flex-col gap-7 w-full">
-    <ProjectHeader />
+    <PageHeader title="Novo Projeto" />
     <div class="rounded-lg border border-neutral-200 flex justify-center w-full py-7">
       <ProjectForm ref="formRef" @submit="handleSubmit" />
     </div>

@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { showSearch = true } = defineProps<{
+  showSearch?: any;
+}>();
+</script>
 
 <template>
   <header
@@ -11,8 +15,13 @@
       </div>
     </NuxtLink>
 
-    <button class="absolute h-full w-10 flex items-center justify-center right-10 cursor-pointer" type="button">
+    <NuxtLink
+      v-if="showSearch"
+      to="/search"
+      class="absolute h-full w-10 flex items-center justify-center right-10 cursor-pointer"
+      type="button"
+    >
       <IconSearch />
-    </button>
+    </NuxtLink>
   </header>
 </template>

@@ -33,7 +33,7 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col gap-7 w-full">
-    <ProjectHeader />
+    <PageHeader title="Editar projeto" />
     <div class="rounded-lg border border-neutral-200 flex justify-center w-full py-7">
       <ProjectForm v-if="projectForm" :initFormValues="projectForm" @submit="handleSubmit" />
       <ProjectFormSkeleton v-else />

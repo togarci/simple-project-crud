@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import { toast } from 'vue3-toastify';
+import { useProjectStore } from '~/store/project';
 import { useWishListeStore } from '~/store/wishlist';
 import { formatDateToLong } from '~/utils/formatDate';
 
-const emit = defineEmits(['handleDelete']);
 const wishListStore = useWishListeStore();
+const projectStore = useProjectStore();
 
 const props = defineProps<{
   project: {
@@ -19,6 +21,15 @@ const props = defineProps<{
 const isOpenMenu = ref(false);
 const menuRef: any = ref(null);
 const isFavorite = computed(() => wishListStore.wishlist.includes(props.project.id));
+
+const deleteProject = (projectId: string) => {
+  try {
+    projectStore.removeFromData(projectId);
+    toast.success('Projeto deletado com sucesso.');
+  } catch (error) {
+    toast.error('Falha ao deletar projeto.');
+  }
+};
 
 onMounted(() => {
   window.addEventListener('click', (evt) => {
@@ -69,7 +80,7 @@ const handleWishList = () => {
             </li>
             <li
               data-testId="delete-option"
-              @click="emit('handleDelete', project.id)"
+              @click="deleteProject(project.id)"
               class="p-3 flex cursor-pointer items-center border-t border-primary-50 gap-2"
             >
               <div class="size-6 flex items-center justify-center">

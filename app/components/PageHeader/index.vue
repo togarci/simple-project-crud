@@ -1,4 +1,7 @@
 <script setup lang="ts">
+defineProps<{
+  title: string;
+}>();
 const router = useRouter();
 
 const handleBack = () => {
@@ -13,6 +16,6 @@ const handleBack = () => {
       <span class="text-primary-500 font-normal text-base">Voltar</span>
     </button>
 
-    <h1 class="text-primary-900 font-semibold text-2xl">Novo projeto</h1>
+    <h1 class="text-primary-900 font-semibold text-2xl">{{ title }}</h1>
   </div>
 </template>

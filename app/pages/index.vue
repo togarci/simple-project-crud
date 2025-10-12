@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { data } from 'happy-dom/lib/PropertySymbol.js';
 import { toast } from 'vue3-toastify';
 import { useProjectStore, type Project } from '~/store/project';
 import { useWishListeStore } from '~/store/wishlist';
@@ -34,15 +33,6 @@ const allProjectData = computed(() => {
 
   return dataToReturn ?? [];
 });
-
-const deleteProject = (projectId: string) => {
-  try {
-    projectStore.removeFromData(projectId);
-    toast.success('Projeto deletado com sucesso.');
-  } catch (error) {
-    toast.error('Falha ao deletar projeto.');
-  }
-};
 </script>
 
 <template>
@@ -60,7 +50,6 @@ const deleteProject = (projectId: string) => {
             v-for="project in allProjectData"
             :key="project.id"
             :project="project"
-            @handleDelete="deleteProject"
             data-testid="project-card"
           />
         </div>
