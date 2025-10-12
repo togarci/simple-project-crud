@@ -8,12 +8,14 @@ definePageMeta({
 const projectStore = useProjectStore();
 
 const searchQ = ref('');
-const allProjectData = computed(() => projectStore.projects.filter((project) => project.name.includes(searchQ.value)));
+const allProjectData = computed(() =>
+  projectStore.projects.filter((project) => project.name.toLowerCase().includes(searchQ.value.toLowerCase()))
+);
 </script>
 
 <template>
   <div>
-    <SearchHeader v-model:searchQ="searchQ" />
+    <InputSearch v-model:searchQ="searchQ" />
     <section class="px-8 py-12 flex flex-col gap-7">
       <PageHeader title="Resultado da busca" />
 
