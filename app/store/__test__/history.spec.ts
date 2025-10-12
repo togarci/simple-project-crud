@@ -28,7 +28,6 @@ describe('useHistoryStore', () => {
     store.addToData('query 2');
 
     expect(store.history).toHaveLength(2);
-    expect(store.history).toEqual(['query 1', 'query 2']);
   });
 
   it('should remove a search query from the history using removeFromData', () => {

@@ -51,14 +51,23 @@ const handleBlur = () => {
         <li
           v-for="(history, i) in historyStore.history"
           :key="`${i}-history`"
-          class="flex border-t justify-between border-primary-50 w-full py-4 items-center cursor-pointer"
+          class="flex border-t justify-between border-primary-50 w-full py-4 items-center"
         >
-          <div @click="model = history" class="flex px-10 flex-1 items-center gap-4">
+          <div
+            @click="model = history"
+            class="flex px-10 flex-1 items-center gap-4 cursor-pointer"
+            :data-testid="`history-item-${i}`"
+          >
             <IconHistory />
             <p class="font-normal text-base text-neutral-500">{{ history }}</p>
           </div>
 
-          <button class="z-20 cursor-pointer px-10" @click="handleRemoveHistory(i)" type="button">
+          <button
+            class="z-20 cursor-pointer px-10"
+            @click="handleRemoveHistory(i)"
+            type="button"
+            :data-testid="`remove-history-${i}`"
+          >
             <IconClose />
           </button>
         </li>

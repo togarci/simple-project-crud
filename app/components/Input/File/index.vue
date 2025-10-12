@@ -22,7 +22,12 @@ const handleChange = (evt: Event) => {
   const inputValue = evt.target as HTMLInputElement;
   const file = inputValue.files?.[0];
 
-  if (file?.size && file?.size > props.limitMbSize * 1024 * 1024) {
+  if (!file) {
+    emits('update:modelValue', '');
+    return;
+  }
+
+  if (file.size > props.limitMbSize * 1024 * 1024) {
     toast.error('Tamanho excedido! A imagem deve ter no máximo 1 MB.', {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -30,7 +35,11 @@ const handleChange = (evt: Event) => {
     return;
   }
 
-  emits('update:modelValue', file ? URL.createObjectURL(file) : '');
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    emits('update:modelValue', e.target?.result as string);
+  };
+  reader.readAsDataURL(file);
 };
 
 const handleRemoveImage = () => {
