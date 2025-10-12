@@ -4,7 +4,7 @@ defineProps<{
 }>();
 
 const wishList = defineModel<boolean>('wishList');
-const sortBy = defineModel<string>('sortBy');
+const sortBy = defineModel<string | null>('sortBy');
 
 const options = [
   {
