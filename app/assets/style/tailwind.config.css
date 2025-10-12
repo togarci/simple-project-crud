@@ -33,6 +33,10 @@
   --shadow-custom-100: 0px 4px 4px 0px #00000040;
 }
 
+::selection {
+  @apply bg-accent text-white;
+}
+
 body {
   @apply font-primary bg-primary-50 text-primary-950;
 }
