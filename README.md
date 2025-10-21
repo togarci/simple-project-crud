@@ -43,7 +43,7 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente local
 
 ### Pré-requisitos
 
-- Node.js (versão 18.x ou superior)
+- Node.js (versão 22.x ou superior)
 - Yarn ou NPM
 
 ### 1. Clone o Repositório
