@@ -32,11 +32,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-7 w-full">
+  <div class="flex flex-col py-6 md:py-12 gap-7 w-full">
     <PageHeader title="Editar projeto" />
-    <div class="rounded-lg border border-neutral-200 flex justify-center w-full py-7">
-      <ProjectForm v-if="projectForm" :initFormValues="projectForm" @submit="handleSubmit" />
-      <ProjectFormSkeleton v-else />
+    <div class="rounded-lg lg:border border-neutral-200 flex justify-center w-full py-7">
+      <FormProject v-if="projectForm" :initFormValues="projectForm" @submit="handleSubmit" />
+      <FormProjectSkeleton v-else />
     </div>
   </div>
 </template>

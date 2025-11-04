@@ -10,8 +10,8 @@ const { showSearch = true } = defineProps<{
   >
     <NuxtLink href="/">
       <div class="flex items-center gap-2.5">
-        <NuxtImg data-testId="header-img-logo" src="/favicon.svg" alt="logo" width="72" height="72" />
-        <h1 class="font-normal w-28 text-white text-lg">Gerenciador de Projetos</h1>
+        <NuxtImg data-testId="header-img-logo" src="/favicon.svg" alt="logo" class="size-14 md:size-18" />
+        <h1 class="font-normal w-28 text-white text-base md:text-lg">Gerenciador de Projetos</h1>
       </div>
     </NuxtLink>
 
@@ -21,7 +21,7 @@ const { showSearch = true } = defineProps<{
       class="absolute h-full w-10 flex items-center justify-center right-10 cursor-pointer"
       type="button"
     >
-      <IconSearch />
+      <SearchSVG />
     </NuxtLink>
   </header>
 </template>

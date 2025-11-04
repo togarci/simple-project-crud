@@ -67,37 +67,25 @@ onMounted(() => {
 
 <template>
   <form @submit.prevent="submit" class="flex flex-col max-w-[702px] w-full gap-5">
-    <InputText
-      v-model="projectName"
-      :error="projectNameFormError"
-      name="project_name"
-      label="Nome do Projeto"
-      required
-    />
-    <InputText v-model="projectClient" :error="projectClientFormError" name="client" label="Cliente" required />
+    <Text v-model="projectName" :error="projectNameFormError" name="project_name" label="Nome do Projeto" required />
+    <Text v-model="projectClient" :error="projectClientFormError" name="client" label="Cliente" required />
 
-    <div class="flex gap-5">
-      <InputDate
+    <div class="flex max-md:flex-col gap-5">
+      <Date
         v-model="projectStartDate"
         :error="projetcStartDateFormError"
         name="start_date"
         label="Data de Início"
         required
       >
-        <IconStartCalendar />
-      </InputDate>
-      <InputDate
-        v-model="projectEndDate"
-        :error="projectEndDateFormError"
-        name="end_date"
-        label="Data de Término"
-        required
-      >
-        <IconEndCalendar />
-      </InputDate>
+        <StartCalendarSVG />
+      </Date>
+      <Date v-model="projectEndDate" :error="projectEndDateFormError" name="end_date" label="Data de Término" required>
+        <EndCalendarSVG />
+      </Date>
     </div>
 
-    <InputFile :limitMbSize="5" v-model="image" data-testid="input-file" />
+    <File :limitMbSize="5" v-model="image" data-testid="input-file" />
 
     <Button size="lg" type="submit" :disabled="checkAllFields"> Salvar projeto </Button>
   </form>

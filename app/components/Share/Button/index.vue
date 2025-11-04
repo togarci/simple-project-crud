@@ -24,8 +24,8 @@ defineEmits(['click']);
       'bg-primary-500 hover:bg-primary-600 cursor-pointer text-white': variant === 'primary' && !disabled,
       'bg-white border border-primary-500 hover:bg-secondary-500 text-primary-500  cursor-pointer':
         variant === 'secondary' && !disabled,
-      'h-10 text-base gap-2.5': size === 'md',
-      'h-[52px] text-xl gap-3.5': size === 'lg',
+      'md:h-10 h-9 text-sm md:text-base gap-2.5': size === 'md',
+      'h-10 md:h-[52px] text-lg md:text-xl gap-3.5': size === 'lg',
     }"
   >
     <slot></slot>

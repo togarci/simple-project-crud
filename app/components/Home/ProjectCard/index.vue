@@ -48,9 +48,9 @@ const handleWishList = () => {
 </script>
 
 <template>
-  <div>
+  <div class="w-full min-[400px]:w-[300px] max-w-full xl:w-[346px]">
     <Modal @submit="deleteProject" v-model:isOpenModal="isOpenModal" title="Remover projeto">
-      <template #icon> <IconTrash className="size-5 fill-none text-white" /></template>
+      <template #icon> <TrashSVG className="size-5 fill-none text-white" /></template>
 
       <div class="flex flex-col w-full py-10 gap-4">
         <p class="text-neutral-500 font-normal text-center text-base">Essa ação removerá definitivamente o projeto:</p>
@@ -61,12 +61,12 @@ const handleWishList = () => {
     <div class="relative">
       <img
         :src="project.image ? project.image : '/image/ProjectCard/Image.png'"
-        class="w-[346px] h-[232px] object-cover rounded-t-2xl"
+        class="w-full h-[190px] xl:h-[232px] object-cover rounded-t-2xl"
       />
 
-      <div class="flex items-center absolute bottom-5 right-5 gap-5">
+      <div class="flex items-center absolute bottom-5 h-fit right-5 gap-5">
         <button @click="handleWishList" type="button">
-          <IconStar
+          <StarSVG
             :className="{
               'size-[22px] fill-none text-white': !isFavorite,
               'size-[22px] fill-accent text-white': isFavorite,
@@ -81,13 +81,13 @@ const handleWishList = () => {
           type="button"
           data-testId="button-menu"
         >
-          <IconMenu />
+          <MenuSVG />
 
           <ul v-if="isOpenMenu" class="absolute shadow-custom-100 rounded-lg bg-white w-[240px] right-0 top-9">
             <li data-testId="edit-option">
               <NuxtLink class="p-3 cursor-pointer flex items-center gap-2" :to="`/project/${project.id}`">
                 <div class="size-6 flex items-center justify-center">
-                  <IconEdit />
+                  <EditSVG />
                 </div>
                 <span class="text-primary-500 font-normal text-base">Editar</span>
               </NuxtLink>
@@ -98,7 +98,7 @@ const handleWishList = () => {
               class="p-3 flex cursor-pointer items-center border-t border-primary-50 gap-2"
             >
               <div class="size-6 flex items-center justify-center">
-                <IconThinTrash class="size-6 fill-none text-primary-500" />
+                <ThinTrashSVG class="size-6 fill-none text-primary-500" />
               </div>
               <span class="text-primary-500 font-normal text-base">Deletar</span>
             </li>
@@ -107,27 +107,36 @@ const handleWishList = () => {
       </div>
     </div>
 
-    <div class="flex w-full px-4 py-5 gap-4 bg-white rounded-b-2xl border border-neutral-200 flex-col">
-      <p class="font-bold text-primary-900 text-xl">{{ project.name }}</p>
+    <div
+      class="flex w-full max-w-full h-fit px-2 sm:px-4 py-5 gap-4 bg-white rounded-b-2xl border border-neutral-200 flex-col"
+    >
+      <div class="font-bold text-primary-900 line-clamp-1 text-base md:text-xl">
+        {{ project.name }}
+      </div>
+
       <div class="flex items-center gap-1">
-        <span class="font-bold text-base text-neutral-500">Cliente:</span>
-        <p class="text-neutral-500 font-normal text-base">
+        <span class="font-bold text-sm md:text-base text-neutral-500">Cliente:</span>
+        <div class="text-neutral-500 line-clamp-1 font-normal text-sm md:text-base">
           {{ project.client }}
-        </p>
+        </div>
       </div>
 
       <hr class="w-full text-neutral-50 h-px" />
 
       <div class="flex items-center gap-3">
-        <IconStartCalendar />
-        <p class="text-neutral-500 font-normal text-base">
+        <div class="max-sm:hidden">
+          <StartCalendarSVG />
+        </div>
+        <p class="text-neutral-500 font-normal text-xs sm:text-base">
           {{ formatDateToLong(project.startDate) }}
         </p>
       </div>
 
       <div class="flex items-center gap-3">
-        <IconEndCalendar />
-        <p class="text-neutral-500 font-normal text-base">
+        <div class="max-sm:hidden">
+          <EndCalendarSVG />
+        </div>
+        <p class="text-neutral-500 font-normal text-xs sm:text-base">
           {{ formatDateToLong(project.endDate) }}
         </p>
       </div>

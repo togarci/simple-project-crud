@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { toast } from 'vue3-toastify';
 import { useProjectStore, type Project } from '~/store/project';
 import { useWishListeStore } from '~/store/wishlist';
 
@@ -36,17 +35,19 @@ const allProjectData = computed(() => {
 </script>
 
 <template>
-  <div class="h-[calc(100vh-178px)]">
+  <div class="h-[calc(100vh-178px)] py-6 md:py-12">
     <template v-if="projectStore.projects.length > 0">
-      <div class="flex flex-col items-center gap-7">
-        <HomeHeader
+      <div class="flex flex-col gap-7">
+        <TitleSection
           v-model:wishList="isWishListActive"
           v-model:sortBy="sortBy"
           :projectCount="projectStore.projects.length"
         />
 
-        <div class="flex w-full gap-5 flex-wrap">
-          <HomeProjectCard
+        <div
+          class="grid grid-cols-1 min-[400px]:grid-cols-2 w-max max-w-full mx-auto lg:grid-cols-3 2xl:grid-cols-4 5xl:flex gap-5 pb-12 lg:gap-7.5"
+        >
+          <ProjectCard
             v-for="project in allProjectData"
             :key="project.id"
             :project="project"
@@ -57,7 +58,7 @@ const allProjectData = computed(() => {
     </template>
 
     <template v-else>
-      <HomeEmptyState />
+      <EmptyState />
     </template>
   </div>
 </template>

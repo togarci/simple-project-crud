@@ -4,7 +4,7 @@ import { toast } from 'vue3-toastify';
 import InputFile from './index.vue';
 import IconUpload from '~/components/Icon/Upload.vue';
 import IconTrash from '~/components/Icon/Trash.vue';
-import Button from '~/components/Button/index.vue';
+import Button from '~/components/Share/Button/index.vue';
 
 vi.mock('vue3-toastify', () => ({
   toast: {

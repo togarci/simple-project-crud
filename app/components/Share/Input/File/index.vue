@@ -54,7 +54,7 @@ const handleRemoveImage = () => {
       class="absolute top-2 right-2 p-1 border border-gray-600 rounded-full bg-white flex justify-center items-center"
       @click="handleRemoveImage"
     >
-      <IconTrash />
+      <TrashSVG />
     </button>
     <div
       @click="handleClick"
@@ -64,7 +64,7 @@ const handleRemoveImage = () => {
       <input ref="refInput" type="file" class="h-0 hidden" @change="handleChange" accept="image/png, image/jpg" />
 
       <template v-if="!modelValue">
-        <IconUpload />
+        <UploadSVG />
 
         <div class="flex flex-col gap-3">
           <p class="text-neutral-500 text-center font-normal text-sm lg:text-base">

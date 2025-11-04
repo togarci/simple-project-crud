@@ -4,8 +4,8 @@ const route = useRoute();
 
 <template>
   <div class="flex flex-col size-full">
-    <LayoutHeader :showSearch="route.meta.showSearch ?? true" />
-    <div class="px-8 py-12">
+    <Header :showSearch="route.meta.showSearch ?? true" />
+    <div class="px-4 max-w-[1920px] md:px-8">
       <slot></slot>
     </div>
   </div>

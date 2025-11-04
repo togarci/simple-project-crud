@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import Header from './index.vue';
-import Switch from '~/components/Switch/index.vue';
-import Select from '~/components/Select/index.vue';
+import Switch from '~/components/Share/Switch/index.vue';
+import Select from '~/components/Share/Select/index.vue';
 
 const ButtonStub = {
   name: 'Button',

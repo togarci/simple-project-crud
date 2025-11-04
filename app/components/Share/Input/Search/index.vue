@@ -34,7 +34,7 @@ const handleBlur = () => {
       class="flex items-center px-10 relative size-full rounded-t-2xl gap-5"
       :class="{ 'border-2 border-primary-500 !border-b-0': isOpenSearchHistory && historyStore.history.length > 0 }"
     >
-      <IconSearch className="fill-none text-primary-500 size-5" />
+      <SearchSVG className="fill-none text-primary-500 size-5" />
       <input
         v-model="model"
         type="text"
@@ -58,7 +58,7 @@ const handleBlur = () => {
             class="flex px-10 flex-1 items-center gap-4 cursor-pointer"
             :data-testid="`history-item-${i}`"
           >
-            <IconHistory />
+            <HistorySVG />
             <p class="font-normal text-base text-neutral-500">{{ history }}</p>
           </div>
 
@@ -68,7 +68,7 @@ const handleBlur = () => {
             type="button"
             :data-testid="`remove-history-${i}`"
           >
-            <IconClose />
+            <CloseSVG />
           </button>
         </li>
       </ul>

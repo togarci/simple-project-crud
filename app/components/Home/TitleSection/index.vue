@@ -23,17 +23,26 @@ const options = [
 </script>
 
 <template>
-  <div class="w-full flex justify-between">
-    <h1 class="text-primary-900 font-semibold text-2xl">Projetos ({{ projectCount }})</h1>
+  <div class="w-full mx-auto flex max-lg:flex-wrap gap-5 justify-between">
+    <div class="flex w-full justify-between">
+      <h1 class="text-primary-900 font-semibold text-xl text-nowrap md:text-2xl">Projetos ({{ projectCount }})</h1>
 
-    <div class="flex gap-5">
+      <NuxtLink class="lg:hidden" to="/project/create">
+        <Button>
+          <CirclePlusSVG />
+          <span class="text-base text-nowrap"> Novo </span>
+        </Button>
+      </NuxtLink>
+    </div>
+
+    <div class="flex max-lg:ml-auto max-sm:flex-wrap flex-row-reverse lg:flex-row gap-5">
       <Switch label="Apenas Favoritos" v-model="wishList" />
 
       <Select :options="options" v-model="sortBy" />
 
-      <NuxtLink to="/project/create">
+      <NuxtLink class="max-lg:hidden" to="/project/create">
         <Button>
-          <IconCirclePlus />
+          <CirclePlusSVG />
           <span class="text-base text-nowrap"> Novo Projeto </span>
         </Button>
       </NuxtLink>

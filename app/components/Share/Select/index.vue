@@ -60,7 +60,7 @@ onUnmounted(() => {
         class="transition-transform ease-linear duration-100"
         :class="{ 'rotate-180': isOpenSelect, 'rotate-0': !isOpenSelect }"
       >
-        <IconAngleBottom />
+        <AngleBottomSVG />
       </div>
     </button>
 

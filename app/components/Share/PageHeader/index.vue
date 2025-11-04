@@ -10,12 +10,12 @@ const handleBack = () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-3">
+  <div class="flex w-full flex-col gap-3">
     <button @click="handleBack" type="button" class="flex cursor-pointer items-center gap-2">
-      <IconArrowLeft />
-      <span class="text-primary-500 font-normal text-base">Voltar</span>
+      <ArrowLeftSVG />
+      <span class="text-primary-500 font-normal text-sm md:text-base">Voltar</span>
     </button>
 
-    <h1 class="text-primary-900 font-semibold text-2xl">{{ title }}</h1>
+    <h1 class="text-primary-900 font-semibold text-xl md:text-2xl">{{ title }}</h1>
   </div>
 </template>
