@@ -41,7 +41,7 @@ onUnmounted(() => {
       ref="modalRef"
       class="bg-white max-md:justify-between p-8 max-md:w-full relative max-md:h-full md:min-w-[582px] flex flex-col rounded-lg"
     >
-      <div data-testId="content-icon" class="flex justify-center absolute left-0 w-full -top-8">
+      <div data-testId="content-icon" class="hidden md:flex justify-center absolute left-0 w-full -top-8">
         <div
           v-if="slots.icon"
           class="bg-primary-500 shadow-custom-100 rounded-full size-16 flex items-center justify-center"
@@ -50,7 +50,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <header class="w-full border-b pb-5 border-neutral-300" :class="{ 'pt-3': slots.icon }">
+      <header class="w-full border-b pb-5 border-neutral-300" :class="{ 'md:pt-3': slots.icon }">
         <h1 class="text-[22px] text-center font-semibold text-primary-900">{{ title }}</h1>
       </header>
 

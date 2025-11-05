@@ -35,7 +35,7 @@ const allProjectData = computed(() => {
 </script>
 
 <template>
-  <div class="h-[calc(100vh-178px)] py-6 md:py-12">
+  <div class="py-6 md:py-12">
     <template v-if="projectStore.projects.length > 0">
       <div class="flex flex-col gap-7">
         <TitleSection
@@ -44,9 +44,7 @@ const allProjectData = computed(() => {
           :projectCount="projectStore.projects.length"
         />
 
-        <div
-          class="grid grid-cols-1 min-[400px]:grid-cols-2 w-max max-w-full mx-auto lg:grid-cols-3 2xl:grid-cols-4 5xl:flex gap-5 pb-12 lg:gap-7.5"
-        >
+        <div class="flex flex-wrap max-lg:justify-center gap-4 sm:gap-5 lg:gap-7.5">
           <ProjectCard
             v-for="project in allProjectData"
             :key="project.id"
