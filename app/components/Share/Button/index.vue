@@ -18,7 +18,7 @@ defineEmits(['click']);
     :type="type"
     :disabled="disabled"
     @click="$emit('click')"
-    class="rounded-[26px] w-full flex items-center justify-center font-normal px-8 transition-colors"
+    class="rounded-[26px] w-full flex cursor-pointer items-center justify-center font-normal px-8 transition-colors"
     :class="{
       'bg-primary-200 cursor-not-allowed text-white': disabled,
       'bg-primary-500 hover:bg-primary-600 cursor-pointer text-white': variant === 'primary' && !disabled,

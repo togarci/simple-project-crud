@@ -35,7 +35,7 @@ const allProjectData = computed(() => {
 </script>
 
 <template>
-  <div class="py-6 md:py-12">
+  <div class="py-6 size-full md:py-12">
     <template v-if="projectStore.projects.length > 0">
       <div class="flex flex-col gap-7">
         <TitleSection

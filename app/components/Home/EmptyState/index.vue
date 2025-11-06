@@ -1,5 +1,7 @@
 <template>
-  <section class="flex flex-1 size-full bg-white rounded-sm p-10 items-center justify-center">
+  <section
+    class="flex min-h-[calc(100vh-112px)] md:min-h-[calc(100dvh-176px)] bg-white rounded-sm p-10 items-center justify-center"
+  >
     <div class="flex flex-col items-center gap-5">
       <h1 class="font-semibold text-2xl text-center text-primary-950">Nenhum Projeto</h1>
       <p class="text-neutral-500 font-normal text-base text-center">

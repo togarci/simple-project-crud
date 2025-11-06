@@ -48,13 +48,15 @@ const handleWishList = () => {
 </script>
 
 <template>
-  <div class="w-full min-[400px]:w-[300px] max-w-full xl:w-[346px]">
+  <div class="w-full min-[400px]:max-w-75 max-w-full xl:max-w-[346px]">
     <Modal @submit="deleteProject" v-model:isOpenModal="isOpenModal" title="Remover projeto">
       <template #icon> <TrashSVG className="size-5 fill-none text-white" /></template>
 
-      <div class="flex flex-col w-full py-10 gap-4">
+      <div class="flex flex-col items-center w-full py-10 gap-4">
         <p class="text-neutral-500 font-normal text-center text-base">Essa ação removerá definitivamente o projeto:</p>
-        <h1 class="text-primary-950 text-center text-2xl font-medium">{{ project.name }}</h1>
+        <h1 class="text-primary-950 text-center line-clamp-2 text-wrap max-w-75 text-2xl font-medium">
+          {{ project.name }}
+        </h1>
       </div>
     </Modal>
 

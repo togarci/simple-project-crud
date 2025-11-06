@@ -29,7 +29,7 @@ const handleBlur = () => {
 </script>
 
 <template>
-  <header class="w-full h-[78px] shadow-custom-100 bg-white px-px">
+  <header class="w-full h-16 md:h-[78px] shadow-custom-100 bg-white px-px">
     <div
       class="flex items-center px-10 relative size-full rounded-t-2xl gap-5"
       :class="{ 'border-2 border-primary-500 !border-b-0': isOpenSearchHistory && historyStore.history.length > 0 }"
@@ -46,7 +46,7 @@ const handleBlur = () => {
 
       <ul
         v-if="isOpenSearchHistory && historyStore.history.length > 0"
-        class="bg-white absolute top-[75px] -left-0.5 z-10 rounded-b-2xl border-2 border-primary-500 w-[calc(100%+4px)] !border-t-0"
+        class="bg-white absolute top-[60px] md:top-[75px] -left-0.5 z-10 rounded-b-2xl border-2 border-primary-500 w-[calc(100%+4px)] !border-t-0"
       >
         <li
           v-for="(history, i) in historyStore.history"
