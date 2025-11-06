@@ -24,6 +24,6 @@ describe('PageHeader', () => {
 
     const button = wrapper.find('button');
     expect(button.text()).toContain('Voltar');
-    expect(wrapper.findComponent({ name: 'IconArrowLeft' }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'ArrowLeftSVG' }).exists()).toBe(true);
   });
 });

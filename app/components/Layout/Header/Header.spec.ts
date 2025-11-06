@@ -25,7 +25,7 @@ describe('Layout/Header', () => {
   it('should render the search button with its icon', async () => {
     const wrapper = await mountSuspended(Header);
 
-    const searchIcon = wrapper.findComponent({ name: 'IconSearch' });
+    const searchIcon = wrapper.findComponent({ name: 'SearchSVG' });
     expect(searchIcon.exists()).toBe(true);
   });
 });

@@ -58,9 +58,9 @@ describe('Button', () => {
       },
     });
 
-    expect(wrapper.classes()).toContain('h-10');
+    expect(wrapper.classes()).toContain('md:h-10');
 
     await wrapper.setProps({ size: 'lg' });
-    expect(wrapper.classes()).toContain('h-[52px]');
+    expect(wrapper.classes()).toContain('md:h-[52px]');
   });
 });

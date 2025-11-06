@@ -2,8 +2,8 @@ import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { toast } from 'vue3-toastify';
 import InputFile from './index.vue';
-import IconUpload from '~/components/Icon/Upload.vue';
-import IconTrash from '~/components/Icon/Trash.vue';
+import IconUpload from '~/components/Share/Icon/UploadSVG.vue';
+import IconTrash from '~/components/Share/Icon/TrashSVG.vue';
 import Button from '~/components/Share/Button/index.vue';
 
 vi.mock('vue3-toastify', () => ({
@@ -49,14 +49,34 @@ describe('InputFile', () => {
       },
     });
 
-    const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
-    const input = wrapper.find<HTMLInputElement>('input[type="file"]');
+    const fileContent = 'dummy content';
+    const file = new File([fileContent], 'small-image.png', { type: 'image/png' });
+    const dataUrl = 'data:image/png;base64,ZHVtbXkgY29udGVudA==';
 
-    await vi.spyOn(input.element, 'files', 'get').mockReturnValue([file] as any);
+    // Simula o FileReader para controlar o comportamento assíncrono
+    const readerMock = vi.spyOn(window, 'FileReader').mockImplementation(
+      () =>
+        ({
+          readAsDataURL: vi.fn(function (this: FileReader) {
+            if (this.onload) {
+              this.onload({ target: { result: dataUrl } } as ProgressEvent<FileReader>);
+            }
+          }),
+        }) as any
+    );
+
+    const input = wrapper.find<HTMLInputElement>('input[type="file"]');
+    Object.defineProperty(input.element, 'files', {
+      value: [file],
+      writable: true,
+    });
+
     await input.trigger('change');
 
     expect(wrapper.emitted('update:modelValue')).toHaveLength(1);
-    expect(wrapper.emitted('update:modelValue')?.[0]).toEqual(['blob:chucknorris.png']);
+    expect(wrapper.emitted('update:modelValue')?.[0]).toEqual([dataUrl]);
+
+    readerMock.mockRestore();
   });
 
   it('should display an error if the file exceeds the size limit', async () => {
@@ -74,7 +94,7 @@ describe('InputFile', () => {
     await vi.spyOn(input.element, 'files', 'get').mockReturnValue([largeFile] as any);
     await input.trigger('change');
 
-    expect(toast.error).toHaveBeenCalledWith('Tamanho excedido! A imagem deve ter no máximo 1 MB.', {
+    expect(toast.error).toHaveBeenCalledWith(`Tamanho excedido! A imagem deve ter no máximo ${limitMb} MB.`, {
       position: 'top-center',
     });
     expect(wrapper.emitted('update:modelValue')).toBeUndefined();

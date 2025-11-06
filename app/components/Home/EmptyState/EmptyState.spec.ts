@@ -21,7 +21,7 @@ describe('Home/EmptyState', () => {
     const button = wrapper.findComponent({ name: 'Button' });
     expect(button.exists()).toBe(true);
 
-    const icon = button.findComponent({ name: 'IconCirclePlus' });
+    const icon = button.findComponent({ name: 'CirclePlusSVG' });
     expect(icon.exists()).toBe(true);
 
     expect(button.text()).toContain('Novo Projeto');
